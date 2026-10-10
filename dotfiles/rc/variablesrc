@@ -1,0 +1,70 @@
+#!/bin/bash
+
+export CONFIG_PATH=/home/$USER/.mark/config
+
+export DOTNET_USE_POLLING_FILE_WATCHER=true
+
+export npm_config_prefix=~/.node_modules
+
+export VISUAL=nvim
+
+export EDITOR="$VISUAL"
+
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+
+export CAPACITOR_ANDROID_STUDIO_PATH=/opt/android-studio/bin/studio.sh
+
+export XDG_CONFIG_DIRS="$CONFIG_PATH:/etc/xdg"
+
+export PGHOST=localhost
+
+export PGPORT=5432;
+
+export CHROME_BIN=$(which chromium)
+
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+export NODE_OPTIONS="--max_old_space_size=6096 --openssl-legacy-provider"
+
+export ELECTRON_TRASH=trash-cli code
+
+export CHROMIUM_FLAGS=$CONFIG_PATH/chromium-flags.conf
+
+export ELECTRON_OZONE_PLATFORM_HINT=wayland
+
+export MANPAGER="nvim +Man!"
+
+# Set the history size (number of lines to keep)
+export HISTSIZE=500 
+
+# Specify the shared history file
+export HISTFILE=~/.shared_history 
+
+export KITTY_CONFIG_DIRECTORY="$CONFIG_PATH/kitty"
+
+function parse_git_branch() {
+  if git rev-parse --is-inside-work-tree &>/dev/null; then
+    local branch=$(git branch --show-current 2>/dev/null)
+    if [ -n "$branch" ]; then
+      echo -e " on \e[38;2;245;116;190m $branch\e[0m"
+    fi
+  fi
+}
+export PS1='\[\e[38;2;206;203;0m\]\u\[\e[0m\] in \[\e[38;2;80;250;123m\]\W\[\e[0m\]$(parse_git_branch)\n\[\e[38;2;80;250;123m\]❯\[\e[0m\] '
+
+export EDITOR=nvim
+
+export VISUAL=nvim
+
+export QT_QPA_PLATFORMTHEME=gtk3
+
+export NIRI_CONFIG=$CONFIG_PATH/niri/config.kdl
+
+export NVIM_RTP=$CONFIG_PATH/nvim
+
+export FLAMESHOT_CONFIG=$CONFIG_PATH/flameshot/flameshot.ini
+
+export XDG_CURRENT_DESKTOP=niri
+# export QS_ICON_THEME=$(gsettings get org.gnome.desktop.interface icon-theme)
+# export GJS_DEBUG_OUTPUT=/home/$USER/.mark/logs/gjs.txt
+#

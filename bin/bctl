@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+TYPE=$1
+
+case $TYPE in
+  "devices")
+    bluetoothctl devices
+    ;;
+  "connect")
+    device=$(bluetoothctl devices | grep -iF "$2" | awk '{ print $2 }')
+    bluetoothctl connect $device
+    ;;
+  "disconnect")
+    device=$(bluetoothctl devices | grep -iF $2 | awk '{ print $2 }')
+    echo $device
+    bluetoothctl disconnect $device
+    ;;
+esac

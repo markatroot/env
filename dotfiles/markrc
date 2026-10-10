@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# source /home/$USER/.mark/dotfiles/rc/colorrc
+source /home/$USER/.mark/dotfiles/rc/themerc
+source /home/$USER/.mark/dotfiles/rc/variablesrc
+source /home/$USER/.mark/dotfiles/rc/aliasrc
+source /home/$USER/.mark/dotfiles/rc/privaterc
+source /home/$USER/.mark/dotfiles/rc/pathrc
+source /home/$USER/.mark/dotfiles/rc/functionrc
+
+set -o vi
+bind -f  /home/$USER/.mark/dotfiles/inputrc
+bind '"jj":vi-movement-mode'
+
+WHEREFILE="/home/mark/Documents/Temp/whereami"
+export PROMPT_COMMAND="pwd > $WHEREFILE"
+if test -f "$WHEREFILE"; then
+  # if the terminal is not opened with specified work directory
+  if [ "$(pwd)" == "/home/$USER" ]; then
+    cd $(cat $WHEREFILE)
+  fi
+fi
+
+# eval "$(starship init bash)"
+
+shopt -s histappend  # Enable appending to the history file
+
+eval "$(ssh-agent -s)" > /dev/null
+
+for file in ~/.mark/dotfiles/scripts/*; do
+  source "$file"
+done

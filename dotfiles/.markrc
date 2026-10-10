@@ -1,0 +1,95 @@
+#!/bin/bash
+
+export PATH="$PATH:~/.fzf/bin"
+export FZF_DEFAULT_COMMAND='find -type d -name node_modules -prune -o -type f -print'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+export PATH=$PATH:~/.dotnet
+export PATH=$PATH:~/.dotnet/tools
+export DOTNET_ROOT=~/.dotnet
+export MSBuildSdksPath=$(echo ~/.dotnet/sdk/3*/Sdks)
+
+export PATH=$PATH:~/.mark/config/hypr/
+
+export DOTNET_USE_POLLING_FILE_WATCHER=true
+
+
+export npm_config_prefix=~/.node_modules
+export PATH=$PATH:~/.node_modules/bin
+
+set -o vi
+bind '"jj":vi-movement-mode'
+
+alias fwcd=". /home/$USER/.mark/bin/fw cd"
+
+WHEREFILE="/home/mark/Documents/Temp/whereami"
+export PROMPT_COMMAND="pwd > $WHEREFILE"
+if test -f "$WHEREFILE"; then
+  # if the terminal is not opened with specified work directory
+  if [ "$(pwd)" == "/home/$USER" ]; then
+    cd $(cat $WHEREFILE)
+  fi
+fi
+
+export VISUAL=nvim
+export EDITOR="$VISUAL"
+
+
+# trash cli
+alias rm="trash-put"
+
+export ANDROID_HOME=/home/$USER/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export ANDROID_SDK=$ANDROID_HOME
+# include inputrc
+bind -f  /home/$USER/.mark/dotfiles/.inputrc
+
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+export CAPACITOR_ANDROID_STUDIO_PATH=/opt/android-studio/bin/studio.sh
+
+export XDG_CONFIG_DIRS="/home/$USER/.mark/config:/etc/xdg"
+
+alias install-packer="git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim"
+
+export PATH=$PATH:/home/$USER/.mark/bin
+
+alias install-omnisharp="rm -rf ~/.mark/lsp/omnisharp && curl -L https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.38.0/omnisharp-linux-x64.zip -o omnisharp.zip && unzip omnisharp -d ~/.mark/lsp/omnisharp && chmod +x ~/.mark/lsp/omnisharp/run"
+
+export PGHOST=localhost
+export PGPORT=5432;
+
+export CHROME_BIN=$(which chromium)
+
+for conf in $(ls /home/$USER/.mark/lsp);
+do
+  export PATH="$PATH:/home/$USER/.mark/lsp/$conf"
+done
+
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+alias pac-orphans='pacman -Qtdq'
+alias pac-update='sudo pacman -Syu --ignore postgresql'
+alias pac-cacheclear='sudo paccache -rk1 && sudo pacman -Scc'
+alias reflector-update='sudo reflector --sort rate --save /etc/pacman.d/mirrorlist --protocol https,http --latest 10 --verbose'
+
+# alias git-push="git push $(git remote) $(git branch | awk '/\*/ { print $2 }')"
+
+export NODE_OPTIONS="--max_old_space_size=6096 --openssl-legacy-provider"
+
+if ! [ -x "$(command -v git)" ]; then
+  git config --global core.hooksPath '~/.mark/.git/hooks'
+fi
+
+
+export ASPNETCORE_ENVIRONMENT=Development
+
+export ELECTRON_TRASH=trash-cli code
+
+export STARSHIP_CONFIG=~/.mark/config/starship/starship.toml
+eval "$(starship init bash)"
+
+export CHROMIUM_FLAGS=~/.mark/config/chromium-flags.conf
+
+export ELECTRON_OZONE_PLATFORM_HINT=wayland

@@ -1,0 +1,33 @@
+#!/bin/bash
+
+export THEME_BG="#282c34"
+export THEME_BG_ALT="#21252b"
+export THEME_FG="#abb2bf"
+
+export THEME_BLACK="#21252b"
+export THEME_RED="#e06c75"
+export THEME_GREEN="#98c379"
+export THEME_YELLOW="#e5c07b"
+export THEME_BLUE="#61afef"
+export THEME_MAGENTA="#c678dd"
+export THEME_CYAN="#56b6c2"
+export THEME_WHITE="#dcdfe4"
+
+export THEME_BRIGHT_BLACK="#5c6370"
+export THEME_BRIGHT_RED="#be5046"
+export THEME_BRIGHT_GREEN="#a5e075"
+export THEME_BRIGHT_YELLOW="#d19a66"
+export THEME_BRIGHT_BLUE="#74b8f2"
+export THEME_BRIGHT_MAGENTA="#d38aea"
+export THEME_BRIGHT_CYAN="#6bc9d4"
+export THEME_BRIGHT_WHITE="#ffffff"
+
+export THEME_ACCENT="#61afef"
+export THEME_SELECTION="#3e4451"
+export THEME_GUTTER="#4b5263"
+
+export THEME_PRIMARY="$THEME_MAGENTA"     # #61afef  — primary actions, links, focus
+export THEME_SUCCESS="$THEME_GREEN"    # #98c379  — success states, confirmations
+export THEME_DANGER="$THEME_RED"       # #e06c75  — errors, destructive actions
+export THEME_INFO="$THEME_CYAN"        # #56b6c2  — info banners, neutral notices
+export THEME_WARNING="$THEME_YELLOW"   # #e5c07b

@@ -1,0 +1,29 @@
+#!/bin/bash
+
+alias dotnet-install="curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --install-dir ~/.dotnet"
+alias compile-omnisharp="./build.sh --target install --verbosity Verbose --use-global-dotnet-sdk --archive --install-path ~/.omnisharp/ --publish-all"
+
+alias v="nvim"
+alias nv="neovide"
+alias enable-keychron='echo 0 | sudo tee /sys/module/hid_apple/parameters/fnmode'
+alias g='git'
+alias vscodium="NODE_OPTIONS=\"\" vscodium"
+alias code="NODE_OPTIONS=\"\" code --ozone-platform-hint=auto"
+
+alias fwcd=". /home/$USER/.mark/bin/fw cd"
+
+alias install-packer="git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim"
+
+alias install-omnisharp="rm -rf ~/.mark/lsp/omnisharp && curl -L https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.38.0/omnisharp-linux-x64.zip -o omnisharp.zip && unzip omnisharp -d ~/.mark/lsp/omnisharp && chmod +x ~/.mark/lsp/omnisharp/run"
+
+alias pac-orphans='pacman -Qtdq'
+alias pac-update='sudo pacman -Syu --ignore postgresql'
+alias pac-cacheclear='sudo paccache -rk1 && sudo pacman -Scc'
+alias reflector-update='sudo reflector --sort rate --save /etc/pacman.d/mirrorlist --protocol https,http --latest 10 --verbose'
+
+alias y='yazi'
+
+alias record='wf-recorder -g "$(slurp)" -f "$HOME/Videos/recordings/$(date "+%m-%d-%y-%H-%M-%S-%3N").mkv"'
+
+# yay -S $(yay -Ss nerd-fonts | awk '$1 ~ /^extra/ { sub(/extra\//, "", $1); print $1 }')
+

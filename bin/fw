@@ -1,0 +1,47 @@
+#!/bin/bash
+
+root_dir="/home/$USER/Coding/Projects/"
+
+if [ "$1" == "vim" ]; then
+  target_dir=$2
+  if [ -d "$root_dir$target_dir" ]; then
+    site_dir="src/Web/CyberMetrics.FaciliWorks.NetCore.Site/wwwroot"
+    cd "$root_dir$target_dir/$site_dir" && nvim .
+  else
+    echo "$root_dir$target_dir dont exists!"
+  fi
+fi
+
+if [ "$1" == "cd" ]; then
+  if [ "$2" == "root" ]; then
+    cd "$(git rev-parse --show-toplevel)"
+  elif [ "$2" == "site" ]; then
+    cd "$(git rev-parse --show-toplevel)" && cd "src/Web/CyberMetrics.FaciliWorks.NetCore.Site/wwwroot"
+  elif [ "$2" == "api" ]; then
+    cd "$(git rev-parse --show-toplevel)" && cd "src/Web/CyberMetrics.FaciliWorks.NetCore.API"
+  elif [ "$2" == "is" ]; then
+    cd "$(git rev-parse --show-toplevel)" && cd "src/Web/CyberMetrics.FaciliWorks.NetCore.IdentityServer"
+  elif [ "$2" == "mob" ]; then
+    cd "$(git rev-parse --show-toplevel)" && cd "src/Web/CyberMetrics.FaciliWorks.NetCore.Mobile"
+  elif [ "$2" == "next" ]; then
+    cd "$(git rev-parse --show-toplevel)" && cd "src/Web/CyberMetrics.FaciliWorks.NetCore.Next"
+  elif [ "$2" == "mob-next" ]; then
+    cd "$(git rev-parse --show-toplevel)" && cd "src/Web/CyberMetrics.FaciliWorks.NetCore.NextMobile"
+  else
+    if [ -d "/home/$USER/Coding/Projects/$2" ]; then
+      cd "/home/$USER/Coding/Projects/$2"
+    else
+      echo "/home/$USER/Coding/Projects/$2 dont exists"
+    fi
+  fi
+elif [ "$1" == "run" ]; then
+  # config_file=~/.mark/config/alacritty/alacritty.toml 
+  config_file=~/.mark/config/foot/minimal_foot.ini
+  root_dir=/home/mark/Coding/Projects
+  foot --title "FWAutomate - $2 - API" --config "$config_file" --working-directory $root_dir/$2/src/Web/CyberMetrics.FaciliWorks.NetCore.API -e dotnet watch &
+  foot  --title "FWAutomate - $2 - IS" --config "$config_file" --working-directory $root_dir/$2/src/Web/CyberMetrics.FaciliWorks.NetCore.IdentityServer -e dotnet watch &
+  if [ -d "$root_dir/$2/src/Web/CyberMetrics.FaciliWorks.NetCore.Mobile" ]; then
+    foot --title "FWAutomate - $2 - Mobile" --config "$config_file" --working-directory $root_dir/$2/src/Web/CyberMetrics.FaciliWorks.NetCore.Mobile -e npm run serve:mark &
+  fi
+  foot --title "FWAutomate - $2 - Site" --config "$config_file" --working-directory $root_dir/$2/src/Web/CyberMetrics.FaciliWorks.NetCore.Site/wwwroot -e npm run serve:mark &
+fi

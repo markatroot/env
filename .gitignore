@@ -1,0 +1,14 @@
+Documents/
+task_reports/
+config/
+notes/
+
+# secrets
+dotfiles/rc/privaterc
+
+# large / re-downloadable
+lsp/
+fonts/
+
+# personal
+pictures/signature*.png

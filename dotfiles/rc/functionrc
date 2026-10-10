@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# v() {
+#   # One socket per directory, keyed by a hash of $PWD
+#   local id sock
+#   id=$(printf '%s' "$PWD" | cksum | cut -d' ' -f1)
+#   sock="${XDG_RUNTIME_DIR:-/tmp}/nvim-${id}.sock"
+#
+#   # Check whether an instance is already alive on that socket
+#   if [ -S "$sock" ] && command nvim --server "$sock" --remote-expr '1' >/dev/null 2>&1; then
+#     if [ $# -gt 0 ]; then
+#       command nvim --server "$sock" --remote "$@"
+#     fi
+#     echo "nvim already running for $PWD (files sent to it)"
+#   else
+#     rm -f "$sock"   # clean up a stale socket left by a crash
+#     command nvim --listen "$sock" "$@"
+#   fi
+# }

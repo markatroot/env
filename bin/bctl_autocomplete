@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+function _bctl_complete() {
+    local cur prev words cword
+    _init_completion || return
+
+    # First argument
+    if [[ $cword -eq 1 ]]; then
+        COMPREPLY=( $(compgen -W "connect disconnect status" -- "$cur") )
+        return
+    fi
+
+    # Second argument, after "connect"
+    if [[ $cword -eq 2 && ${words[1]} == "connect" ]]; then
+        COMPREPLY=( $(compgen -W "airpods speaker keyboard mouse" -- "$cur") )
+        return
+    fi
+}
+
+complete -F _bctl_complete bctl

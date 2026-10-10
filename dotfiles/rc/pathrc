@@ -1,0 +1,41 @@
+#!/bin/bash
+
+export PATH="$PATH:~/.fzf/bin"
+export FZF_DEFAULT_COMMAND='find -type d -name node_modules -prune -o -type f -print'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+export PATH=$PATH:~/.dotnet
+export PATH=$PATH:~/.dotnet/tools
+export DOTNET_ROOT=~/.dotnet
+export MSBuildSdksPath=$(echo ~/.dotnet/sdk/3*/Sdks)
+
+export PATH=$PATH:~/.mark/config/hypr/
+
+# export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+# export CAPACITOR_ANDROID_STUDIO_PATH=/opt/android-studio/bin/studio.sh
+
+export XDG_CONFIG_DIRS="/home/$USER/.mark/config:/etc/xdg"
+
+export STARSHIP_CONFIG=~/.mark/config/starship/starship.toml
+
+export PATH=$PATH:~/.node_modules/bin
+
+export PATH=$PATH:/home/$USER/.cargo/bin
+
+# export ANDROID_HOME=/home/$USER/Android/Sdk
+#
+# export PATH=$PATH:$ANDROID_HOME/tools
+#
+# export PATH=$PATH:$ANDROID_HOME/tools/bin
+#
+# export PATH=$PATH:$ANDROID_HOME/platform-tools
+#
+# export ANDROID_SDK=$ANDROID_HOME
+
+export PATH=$PATH:/home/$USER/.mark/bin
+
+export PATH=$PATH:/home/$USER/.bun/bin
+
+export YAZI_CONFIG_HOME=~/.mark/config/yazi
+
+export PATH="$HOME/.local/bin:$PATH"
