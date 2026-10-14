@@ -10,11 +10,11 @@ alias g='git'
 alias vscodium="NODE_OPTIONS=\"\" vscodium"
 alias code="NODE_OPTIONS=\"\" code --ozone-platform-hint=auto"
 
-alias fwcd=". /home/$USER/.mark/bin/fw cd"
+alias fwcd=". /home/$USER/env/bin/fw cd"
 
 alias install-packer="git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim"
 
-alias install-omnisharp="rm -rf ~/.mark/lsp/omnisharp && curl -L https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.38.0/omnisharp-linux-x64.zip -o omnisharp.zip && unzip omnisharp -d ~/.mark/lsp/omnisharp && chmod +x ~/.mark/lsp/omnisharp/run"
+alias install-omnisharp="rm -rf ~/env/lsp/omnisharp && curl -L https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.38.0/omnisharp-linux-x64.zip -o omnisharp.zip && unzip omnisharp -d ~/env/lsp/omnisharp && chmod +x ~/env/lsp/omnisharp/run"
 
 alias pac-orphans='pacman -Qtdq'
 alias pac-update='sudo pacman -Syu --ignore postgresql'

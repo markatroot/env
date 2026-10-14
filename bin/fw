@@ -35,8 +35,8 @@ if [ "$1" == "cd" ]; then
     fi
   fi
 elif [ "$1" == "run" ]; then
-  # config_file=~/.mark/config/alacritty/alacritty.toml 
-  config_file=~/.mark/config/foot/minimal_foot.ini
+  # config_file=~/env/config/alacritty/alacritty.toml 
+  config_file=~/env/config/foot/minimal_foot.ini
   root_dir=/home/mark/Coding/Projects
   foot --title "FWAutomate - $2 - API" --config "$config_file" --working-directory $root_dir/$2/src/Web/CyberMetrics.FaciliWorks.NetCore.API -e dotnet watch &
   foot  --title "FWAutomate - $2 - IS" --config "$config_file" --working-directory $root_dir/$2/src/Web/CyberMetrics.FaciliWorks.NetCore.IdentityServer -e dotnet watch &

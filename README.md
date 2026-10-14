@@ -1,4 +1,4 @@
-# .mark
+# env
 
 My personal Linux setup (Arch + niri): bash config, helper scripts, and wallpapers.
 
@@ -17,11 +17,11 @@ wallpaper/    wallpapers
 
 ## Install
 
-Paths are hardcoded to `~/.mark`, so clone it there:
+Paths are hardcoded to `~/env`, so clone it there:
 
 ```bash
-git clone <repo-url> ~/.mark
-echo 'source ~/.mark/dotfiles/markrc' >> ~/.bashrc
+git clone <repo-url> ~/env
+echo 'source ~/env/dotfiles/markrc' >> ~/.bashrc
 ```
 
 Create `dotfiles/rc/privaterc` (git-ignored) for tokens and other secrets:

@@ -9,7 +9,7 @@ export PATH=$PATH:~/.dotnet/tools
 export DOTNET_ROOT=~/.dotnet
 export MSBuildSdksPath=$(echo ~/.dotnet/sdk/3*/Sdks)
 
-export PATH=$PATH:~/.mark/config/hypr/
+export PATH=$PATH:~/env/config/hypr/
 
 export DOTNET_USE_POLLING_FILE_WATCHER=true
 
@@ -20,7 +20,7 @@ export PATH=$PATH:~/.node_modules/bin
 set -o vi
 bind '"jj":vi-movement-mode'
 
-alias fwcd=". /home/$USER/.mark/bin/fw cd"
+alias fwcd=". /home/$USER/env/bin/fw cd"
 
 WHEREFILE="/home/mark/Documents/Temp/whereami"
 export PROMPT_COMMAND="pwd > $WHEREFILE"
@@ -44,27 +44,27 @@ export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export ANDROID_SDK=$ANDROID_HOME
 # include inputrc
-bind -f  /home/$USER/.mark/dotfiles/.inputrc
+bind -f  /home/$USER/env/dotfiles/.inputrc
 
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 export CAPACITOR_ANDROID_STUDIO_PATH=/opt/android-studio/bin/studio.sh
 
-export XDG_CONFIG_DIRS="/home/$USER/.mark/config:/etc/xdg"
+export XDG_CONFIG_DIRS="/home/$USER/env/config:/etc/xdg"
 
 alias install-packer="git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim"
 
-export PATH=$PATH:/home/$USER/.mark/bin
+export PATH=$PATH:/home/$USER/env/bin
 
-alias install-omnisharp="rm -rf ~/.mark/lsp/omnisharp && curl -L https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.38.0/omnisharp-linux-x64.zip -o omnisharp.zip && unzip omnisharp -d ~/.mark/lsp/omnisharp && chmod +x ~/.mark/lsp/omnisharp/run"
+alias install-omnisharp="rm -rf ~/env/lsp/omnisharp && curl -L https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.38.0/omnisharp-linux-x64.zip -o omnisharp.zip && unzip omnisharp -d ~/env/lsp/omnisharp && chmod +x ~/env/lsp/omnisharp/run"
 
 export PGHOST=localhost
 export PGPORT=5432;
 
 export CHROME_BIN=$(which chromium)
 
-for conf in $(ls /home/$USER/.mark/lsp);
+for conf in $(ls /home/$USER/env/lsp);
 do
-  export PATH="$PATH:/home/$USER/.mark/lsp/$conf"
+  export PATH="$PATH:/home/$USER/env/lsp/$conf"
 done
 
 export _JAVA_AWT_WM_NONREPARENTING=1
@@ -79,7 +79,7 @@ alias reflector-update='sudo reflector --sort rate --save /etc/pacman.d/mirrorli
 export NODE_OPTIONS="--max_old_space_size=6096 --openssl-legacy-provider"
 
 if ! [ -x "$(command -v git)" ]; then
-  git config --global core.hooksPath '~/.mark/.git/hooks'
+  git config --global core.hooksPath '~/env/.git/hooks'
 fi
 
 
@@ -87,9 +87,9 @@ export ASPNETCORE_ENVIRONMENT=Development
 
 export ELECTRON_TRASH=trash-cli code
 
-export STARSHIP_CONFIG=~/.mark/config/starship/starship.toml
+export STARSHIP_CONFIG=~/env/config/starship/starship.toml
 eval "$(starship init bash)"
 
-export CHROMIUM_FLAGS=~/.mark/config/chromium-flags.conf
+export CHROMIUM_FLAGS=~/env/config/chromium-flags.conf
 
 export ELECTRON_OZONE_PLATFORM_HINT=wayland

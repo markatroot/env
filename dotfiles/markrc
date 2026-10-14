@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# source /home/$USER/.mark/dotfiles/rc/colorrc
-source /home/$USER/.mark/dotfiles/rc/themerc
-source /home/$USER/.mark/dotfiles/rc/variablesrc
-source /home/$USER/.mark/dotfiles/rc/aliasrc
-source /home/$USER/.mark/dotfiles/rc/privaterc
-source /home/$USER/.mark/dotfiles/rc/pathrc
-source /home/$USER/.mark/dotfiles/rc/functionrc
+# source /home/$USER/env/dotfiles/rc/colorrc
+source /home/$USER/env/dotfiles/rc/themerc
+source /home/$USER/env/dotfiles/rc/variablesrc
+source /home/$USER/env/dotfiles/rc/aliasrc
+source /home/$USER/env/dotfiles/rc/privaterc
+source /home/$USER/env/dotfiles/rc/pathrc
+source /home/$USER/env/dotfiles/rc/functionrc
 
 set -o vi
-bind -f  /home/$USER/.mark/dotfiles/inputrc
+bind -f  /home/$USER/env/dotfiles/inputrc
 bind '"jj":vi-movement-mode'
 
 WHEREFILE="/home/mark/Documents/Temp/whereami"
@@ -27,6 +27,6 @@ shopt -s histappend  # Enable appending to the history file
 
 eval "$(ssh-agent -s)" > /dev/null
 
-for file in ~/.mark/dotfiles/scripts/*; do
+for file in ~/env/dotfiles/scripts/*; do
   source "$file"
 done
