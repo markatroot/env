@@ -12,8 +12,8 @@ set -o vi
 bind -f  /home/$USER/env/dotfiles/inputrc
 bind '"jj":vi-movement-mode'
 
-WHEREFILE="/home/mark/Documents/Temp/whereami"
-export PROMPT_COMMAND="pwd > $WHEREFILE"
+WHEREFILE="/home/$USER/Documents/Temp/whereami"
+export PROMPT_COMMAND="__set_ps1; pwd > $WHEREFILE"
 if test -f "$WHEREFILE"; then
   # if the terminal is not opened with specified work directory
   if [ "$(pwd)" == "/home/$USER" ]; then
@@ -30,3 +30,7 @@ eval "$(ssh-agent -s)" > /dev/null
 for file in ~/env/dotfiles/scripts/*; do
   source "$file"
 done
+
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init --cmd cd bash)"
+fi

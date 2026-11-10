@@ -25,5 +25,7 @@ alias y='yazi'
 
 alias record='wf-recorder -g "$(slurp)" -f "$HOME/Videos/recordings/$(date "+%m-%d-%y-%H-%M-%S-%3N").mkv"'
 
+alias pacman='pacman --color=always'
+
 # yay -S $(yay -Ss nerd-fonts | awk '$1 ~ /^extra/ { sub(/extra\//, "", $1); print $1 }')
 

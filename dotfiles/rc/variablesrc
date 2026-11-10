@@ -20,7 +20,7 @@ export PGHOST=localhost
 
 export PGPORT=5432;
 
-export CHROME_BIN=$(which chromium)
+export CHROME_BIN=$(which google-chrome-stable)
 
 export _JAVA_AWT_WM_NONREPARENTING=1
 
@@ -42,15 +42,38 @@ export HISTFILE=~/.shared_history
 
 export KITTY_CONFIG_DIRECTORY="$CONFIG_PATH/kitty"
 
-function parse_git_branch() {
-  if git rev-parse --is-inside-work-tree &>/dev/null; then
-    local branch=$(git branch --show-current 2>/dev/null)
-    if [ -n "$branch" ]; then
-      echo -e " on \e[38;2;245;116;190m $branch\e[0m"
-    fi
+# Two-line prompt (One Dark colors):
+#   ╭─ user@host · dir · ⎇ branch
+#   ╰─❯            (or ╰─✗<code> ❯ after a failed command)
+# Must run first in PROMPT_COMMAND so $? is still the last command's status.
+function __set_ps1() {
+  local status=$?
+  local gray='\[\e[38;2;92;99;112m\]'      # #5c6370
+  local yellow='\[\e[38;2;229;192;123m\]'  # #e5c07b
+  local green='\[\e[38;2;152;195;121m\]'   # #98c379
+  local magenta='\[\e[38;2;198;120;221m\]' # #c678dd
+  local red='\[\e[38;2;224;108;117m\]'     # #e06c75
+  local reset='\[\e[0m\]'
+
+  local git=""
+  local branch
+  branch=$(git branch --show-current 2>/dev/null)
+  # detached HEAD: fall back to the short hash
+  [ -z "$branch" ] && branch=$(git rev-parse --short HEAD 2>/dev/null)
+  if [ -n "$branch" ]; then
+    git=" ${gray}·${reset} ${magenta}⎇ ${branch}${reset}"
   fi
+
+  local arrow
+  if [ "$status" -eq 0 ]; then
+    arrow="${green}❯${reset}"
+  else
+    arrow="${red}✗${status} ❯${reset}"
+  fi
+
+  PS1="${gray}╭─${reset} ${yellow}\u${gray}@\h${reset} ${gray}·${reset} ${green}\W${reset}${git}\n${gray}╰─${reset}${arrow} "
+  return $status
 }
-export PS1='\[\e[38;2;206;203;0m\]\u\[\e[0m\] in \[\e[38;2;80;250;123m\]\W\[\e[0m\]$(parse_git_branch)\n\[\e[38;2;80;250;123m\]❯\[\e[0m\] '
 
 export EDITOR=nvim
 
@@ -65,6 +88,9 @@ export NVIM_RTP=$CONFIG_PATH/nvim
 export FLAMESHOT_CONFIG=$CONFIG_PATH/flameshot/flameshot.ini
 
 export XDG_CURRENT_DESKTOP=niri
+
+export LESS='-R'
+
+export MOZ_ENABLE_WAYLAND=1
 # export QS_ICON_THEME=$(gsettings get org.gnome.desktop.interface icon-theme)
 # export GJS_DEBUG_OUTPUT=/home/$USER/env/logs/gjs.txt
-#
