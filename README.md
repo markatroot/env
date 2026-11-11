@@ -6,7 +6,9 @@ My personal Linux setup (Arch + niri): bash config, helper scripts, and wallpape
 
 ```
 bin/          helper scripts (added to PATH)
+install.sh    links dotfiles into $HOME
 dotfiles/
+  bashrc      symlinked to ~/.bashrc — sources markrc
   markrc      main bash entry point — sources everything below
   inputrc     readline vi-mode bindings
   rc/         aliasrc, pathrc, variablesrc, themerc, functionrc, privaterc
@@ -21,7 +23,7 @@ Paths are hardcoded to `~/env`, so clone it there:
 
 ```bash
 git clone <repo-url> ~/env
-echo 'source ~/env/dotfiles/markrc' >> ~/.bashrc
+~/env/install.sh   # symlinks ~/.bashrc -> dotfiles/bashrc (backs up the old one)
 ```
 
 Create `dotfiles/rc/privaterc` (git-ignored) for tokens and other secrets:

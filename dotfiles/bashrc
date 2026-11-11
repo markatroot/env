@@ -1,0 +1,10 @@
+#
+# ~/.bashrc  (symlinked from ~/env/dotfiles/bashrc by install.sh)
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+source ~/env/dotfiles/markrc
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

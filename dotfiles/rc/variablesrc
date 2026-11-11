@@ -48,6 +48,13 @@ export KITTY_CONFIG_DIRECTORY="$CONFIG_PATH/kitty"
 # Must run first in PROMPT_COMMAND so $? is still the last command's status.
 function __set_ps1() {
   local status=$?
+
+  # Linux virtual console (TTY): no truecolor or box-drawing glyphs, keep it plain
+  if [ "$TERM" = "linux" ]; then
+    PS1='\u@\W \$ '
+    return $status
+  fi
+
   local gray='\[\e[38;2;92;99;112m\]'      # #5c6370
   local yellow='\[\e[38;2;229;192;123m\]'  # #e5c07b
   local green='\[\e[38;2;152;195;121m\]'   # #98c379
